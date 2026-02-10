@@ -1,0 +1,61 @@
+// Definisikan header untuk chip8
+#ifndef CHIP_8
+#define CHIP_8
+
+// Masukan library standar C
+#include <stdint.h>
+
+// Definisikan size memori untuk chip8
+// Karena chip8 memiliki ram 4Kb, maka kita perlu merubah
+// Satuan Kb menjadi byte (4096)
+#define MEMORY_SIZE 4096
+
+// Buat beberapa objek untuk cpu dari chip8, yaitu
+// 16 8bit Register dar V0 -> VF
+// memory dengan size 4Kb
+// 16bit Index Register (I)
+// 16bit Opcode
+// 16bit Program Counter (PC)
+// 16 Level Stack
+// 8bit Stack Pointer (SP)
+// 8bit Delay Timer
+// 8bit Sound Timer
+// 16 Input Key (KEYPAD)
+// 64 * 32 Monochrome Display
+uint8_t      V[16];
+uint8_t      MEMORY[(MEMORY_SIZE)];
+uint16_t     I;
+uint16_t     OPCODE;
+uint16_t     PC;
+uint16_t     LEVEL_STACK[16];
+uint8_t      SP;
+uint8_t      DELAY_TIMER;
+uint8_t      SOUND_TIMER;
+uint8_t      KEYPAD[16];
+uint8_t      DISPLAY[64 * 32];
+
+uint_fast8_t DRAWFLAG;
+
+// Chip8 memiliki fontsetnya tersendiri untuk keypad
+uint8_t CHIP8_FONTSET[80]=
+{
+    0xF0, 0x90, 0x90, 0x90, 0xF0,       // 0
+	0x20, 0x60, 0x20, 0x20, 0x70,       // 1
+	0xF0, 0x10, 0xF0, 0x80, 0xF0,  // 2
+	0xF0, 0x10, 0xF0, 0x10, 0xF0,  // 3
+	0x90, 0x90, 0xF0, 0x10, 0x10,  // 4
+	0xF0, 0x80, 0xF0, 0x10, 0xF0,  // 5
+	0xF0, 0x80, 0xF0, 0x90, 0xF0,  // 6
+	0xF0, 0x10, 0x20, 0x40, 0x40,  // 7
+	0xF0, 0x90, 0xF0, 0x90, 0xF0,  // 8
+	0xF0, 0x90, 0xF0, 0x10, 0xF0,  // 9
+	0xF0, 0x90, 0xF0, 0x90, 0x90,  // A
+	0xE0, 0x90, 0xE0, 0x90, 0xE0,  // B
+	0xF0, 0x80, 0x80, 0x80, 0xF0,  // C
+	0xE0, 0x90, 0x90, 0x90, 0xE0,  // D
+	0xF0, 0x80, 0xF0, 0x80, 0xF0,  // E
+	0xF0, 0x80, 0xF0, 0x80, 0x80   // F
+};
+
+#endif
+
