@@ -4,7 +4,7 @@
 
 ### TODO
 
-- [ ] COMPLETE THE OPCODE
+- [x] COMPLETE THE OPCODE (80% ish done)
 
 - [ ] ADD KEYPAD / KEYBOARD FUNCTION
 
